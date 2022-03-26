@@ -1,0 +1,71 @@
+##################### Play for CentOS
+
+ - name: Only for RedHat Based Distros (Alma/CentOS/Rocky)
+   hosts: centos
+   become: yes
+   tasks:
+     - name: Tasks for RedHat Based Distros
+
+       block:
+        - name: update repositry index before installation
+          dnf:
+           update_cache: yes
+
+        - name: install nginx package on CentOS
+          dnf:
+           name: nginx
+           state: latest
+
+        - name: Start Nginx on CentOS
+          service:
+             name: nginx
+             state: started
+
+        - name: Copy index file to centos webserver
+          copy:
+             src: /tmp/centos.html
+             dest: /usr/share/nginx/html/index.html
+
+       when: ansible_distribution == "CentOS"
+
+
+
+ ##################### Play for Debian
+
+ - name: Only for Debian Based Distros
+   hosts: debian
+   become: yes
+   tasks:
+     - name: Task Only for Debian/Ubuntu Distors
+
+       block:
+        - name: Update repo indexes
+          apt:
+           update_cache: yes
+
+        - name: install nginx on Debian
+          apt:
+           name: nginx
+           state: latest
+
+        - name: Start nginx service
+          service:
+           name: nginx
+           state: started
+
+        - name: Copy index files to debian webserver
+          copy:
+           src: /tmp/debian.html
+           dest: /usr/share/nginx/html/index.html
+
+       when: ansible_distribution == "Debian" and ansible_facts['distribution_major_version'] == "11"
+
+
+#################### Play for Arch
+
+#################### Play for OpenBSD
+
+ #Although it works. I really don't think this is a proper way to write plays. Everythiing in a single .yaml
+ #There should be a proper way. Which I'm sure will learn in Devops_Training_2022 @ veritis with Satya.
+ #
+
