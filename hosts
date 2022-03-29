@@ -1,0 +1,34 @@
+ debian:
+    hosts:
+     debian11:
+        ansible_port: 4422
+        ansible_host: 192.168.88.37
+        ansible_python_interpreter: /usr/bin/python3.9
+
+     debian10:
+        ansible_port: 431
+        ansible_host: 192.168.88.121
+
+ centos:
+    hosts:
+     centos8:
+        ansible_port: 4422
+        ansible_host: 192.168.88.41
+        #ansible_python_interpreter: /usr/bin/python3.6
+
+        #ansible_python_interpreter: /usr/libexec/platform-python
+ all:
+  vars:
+    ansible_user: ansible
+
+
+
+#[debian]
+#debian11 ansible_host=192.168.88.37 ansible_port=4422 ansible_user=ansible
+#debian10 ansible_host=192.168.88.121 ansible_port=431 ansible_user=ansible
+
+#[centos]
+#centos8 ansible_host=192.168.88.41 ansible_port=4422 ansible_user=ansible
+
+
+
