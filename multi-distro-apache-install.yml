@@ -1,0 +1,30 @@
+---
+- hosts: all  #hosts on inventory includes debian10, debian11, centos8
+  become: true
+
+  vars:
+  - select_distro:
+      Debian: apache2
+      RedHat: httpd
+
+
+  tasks:
+   - name: Single play to install Apache web server on multi distro environment
+     package:
+       name: "{{ select_distro[ansible_os_family] }}"
+       state: latest
+   - name: Deliver content
+     copy:
+       content: "Apache Installed on {{ ansible_os_family }} by Ansible. Date:{{ ansible_date_time.date }} Time:{{ ansible_date_time.time }}"
+       dest: /var/www/html/index.html
+   - name: Start and enable Web Service
+     service:
+       name: "{{ select_distro[ansible_os_family] }}"
+       state: started
+       enabled: yes
+
+
+...
+       # when: ansible_distribution == "CentOS" #will install only on CentOS Distros and works fine
+       # when: ansible_distribution == "Debian"  #will install only on Debian Distros and works fine
+       ### How to install on both Distro but with condition like: "Install on  all CentOS" and  "Install on Debian with distro version = 11"
