@@ -1,0 +1,19 @@
+---
+- hosts: centos8
+  become: true
+  tasks:
+   - name: Add tomcat user to sudoers
+     ansible.builtin.lineinfile:
+       path: /etc/sudoers
+       regexp: '^tomcat'
+       line: 'tomcat ALL=(ALL) NOPASSWD: ALL'
+       validate: 'visudo -cf %s'
+     notify: Restart sshd
+
+  handlers:
+   - name: Restart sshd
+     service:
+         name: sshd
+         state: restarted
+
+
