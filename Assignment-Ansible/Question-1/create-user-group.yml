@@ -1,0 +1,6 @@
+---
+- name: Create user tomcat and group tomcat with role
+  hosts: all
+  become: true
+  roles:
+     - create-user-group-role
