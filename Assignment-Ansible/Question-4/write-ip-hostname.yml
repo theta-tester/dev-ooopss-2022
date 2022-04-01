@@ -1,0 +1,6 @@
+---
+- name: write ip address and hostname to /tmp/hosts
+  hosts: all
+  gather_facts: yes
+  roles:
+      - ansible_platform

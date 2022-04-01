@@ -1,0 +1,10 @@
+---
+# tasks file for ansible_platfor
+#
+ - name: Task to add ipaddress and hostname to /tmp/hosts only if rhel
+   lineinfile:
+     path: /tmp/hosts
+     line: '{{ ansible_default_ipv4.address }} {{ ansible_hostname }}'
+     create: yes
+   when: ansible_os_family == "RedHat"
+
