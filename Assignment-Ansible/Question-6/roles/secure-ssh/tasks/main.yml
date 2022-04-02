@@ -1,0 +1,9 @@
+---
+
+    - name: Check config file
+      lineinfile:
+        path: "/etc/ssh/sshd_config"
+        regex: ^(#  *)?PermitRootLogin (yes|no)
+        line: PermitRootLogin no
+
+      notify: restart sshd

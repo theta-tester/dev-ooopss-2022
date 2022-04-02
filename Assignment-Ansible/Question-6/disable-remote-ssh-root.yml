@@ -1,0 +1,8 @@
+---
+
+ - name: secure ssh by disabling remote ssh for root
+   hosts: centos8 debian11
+   gather_facts: false # disabling it  as this script is not dependent on facts and should quicken dry run checks
+   become: true
+   roles:
+       - secure-ssh
