@@ -1,0 +1,6 @@
+---
+- name: change server motd and login.defs
+  hosts: all
+  become: true
+  roles:
+      - change-settings

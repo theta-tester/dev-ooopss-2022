@@ -1,0 +1,20 @@
+- name: Set time to CST
+  timezone:
+      name: America/Chicago
+- name: Adding motd
+  template: src=motd.j2 dest=/etc/motd
+
+- name: Set Password Expiration Days
+  lineinfile:
+    dest: '/etc/login.defs'
+    regexp: "PASS_MAX_DAYS"
+    line: "PASS_MAX_DAYS 90"
+    state: present
+
+- name: Set Password Expiration Days
+  lineinfile:
+    dest: '/etc/login.defs'
+    regexp: "PASS_MIN_DAYS"
+    line: "PASS_MIN_DAYS 7"
+    state: present
+
