@@ -1,4 +1,4 @@
 - name: restart httpd
   service:
-      name: sshd
+      name: httpd
       state: restarted
