@@ -1,0 +1,9 @@
+ntp_server1: pool 0.debian.pool.ntp.org iburst
+ntp_server2: pool 1.debian.pool.ntp.org iburst
+ntp_server3: pool 2.debian.pool.ntp.org iburst
+ntp_server4: pool 3.debian.pool.ntp.org iburst
+
+
+ntp_package: ntp
+
+

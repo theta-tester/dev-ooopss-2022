@@ -1,0 +1,6 @@
+---
+- hosts: debian11
+  become: true
+  name: Installing ntp client
+  roles:
+      - install-ntp

@@ -1,0 +1,17 @@
+---
+
+ - name: update index repo and install ntp client package
+   apt:
+     update_cache: yes
+     name: "{{ ntp_package }}"
+     state: present
+
+
+ - name: deploy conf to hosts
+   template:
+    src: ntp.j2
+    dest: /etc/ntp.conf
+
+   notify: restart ntp
+
+
