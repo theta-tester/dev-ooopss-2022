@@ -1,0 +1,7 @@
+---
+- hosts: centos
+  become: yes
+  name: Installing Apache on centos
+  roles:
+      - install-httpd
+

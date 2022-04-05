@@ -3,3 +3,5 @@
     <html>
     <image href= {{ image_url }}.
     </html>
+
+### asciinema recording at https://asciinema.org/a/TyyVYx6pyGikkf8Uq0PLyxGjL
