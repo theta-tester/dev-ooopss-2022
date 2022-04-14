@@ -1,0 +1,105 @@
+0) login to the system and become a root user
+
+To start a root shell (i.e. a command window where you can run root commands), starting root's environment and login scripts, use:
+sudo -i     (similar to sudo su - , gives you roots environment configuration)
+
+To start a root shell, but keep the current shell's environment, use:
+sudo -s     (similar to sudo su)
+*sudo will not work if you're not in sudoers user list. In such case use "su root" and use root's password
+
+
+
+
+1) copy /etc/sysctl.conf /etc/sysctl.con.bak
+	cp /etc/sysctl.conf /etc/sysctl.con.bak
+
+2) vi /etc/sysctl.conf.bak
+	a)go to first line of the file 
+		in command mode type
+		:0 or 1G
+	b)go to 10th line of the file
+		in command mode type
+		:10 or 10G
+	c) add the below text
+		##
+		## A sample comment
+		##
+	
+		switched to insert mode by typing i and typed the content
+
+	d) delete the 3 line u just created with a single operation
+		type 3dd in command mode make sure you're in the correct line
+	
+	e) go to line 10 and copy 3 lines of text past the copied 3 lines at the bottam of the file in command mode
+		10G (to goto 10th line) 
+		3yy (to copy 3 lines)
+		G (to goto the bottom, last line)		
+		P (to paste the copied 3 lines)
+		
+
+	f) undo the changes u just made
+		u 
+	
+	g) replace all occurrences of "kernel" with "testkernel""
+		:%s/kernel/testkernel/g (note: there was no kernel word in file so i instead did :%s/sysctl/systemcontrol)
+	
+	h) goto line 1 search for "kernel".move to the end of line add " this is kenel parameter"
+		1G 
+		$
+		i (insert mode)
+		this is the kernel parameter
+
+	i) exit file by saving all u r changes
+		:wq
+		
+	3) vi /etc/sysctl.conf.bak
+	a) got to last line of file add a comment line "VM SWAP seting are changing 	by USER"
+		G
+		i	
+		"Type your text"
+	
+	b) got to last line of file and add "vm.swappiness=10"
+		G
+		i
+		"vm.swappiness=10"
+	
+	c) replace 10 with "15" in above command
+		:%s/"vm.swappiness=10"/"vm.swappiness=15"/g
+	
+	d) save the files
+		:wq
+	e) vi /etc/sysctl.conf.bak
+		
+	f) move to the end of file
+		G
+	g) move to begining of file
+		1G or :0
+	
+	h) move to end of line
+		$
+	
+	i) move to beging of line
+		0
+	j) move by a word at a time
+		w
+	h) delete a 1st word in a 1st line
+		goto 1st word of line for which you want to delete and do
+		1x
+	
+	i) undo that changes
+		u
+	
+	j) set the line numbers in that file
+		:set number
+	
+	k) move to the middle of file
+		M (with M the cursor goes to middle of screen no idea about going to middle of file content)
+	
+	l) delete 4 lines
+		4dd
+			
+	m) quit with out saving the file 
+		q!
+	
+		
+
