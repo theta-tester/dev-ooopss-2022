@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 80
+  selector:
+    app: nginx
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          protocol: TCP
+
+# asciinema recording at https://asciinema.org/a/MJLrS7wxPPp1XdPvMDPDTguin
+# for some reason which I was not able to identify NodePort was not working may be need to expose port with command
+# even after exposing the port the LoadBalancer was saying pending and the github post below enlightened me
+# https://github.com/kubernetes/minikube/issues/4113
