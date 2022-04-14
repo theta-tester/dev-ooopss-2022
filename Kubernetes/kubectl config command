@@ -1,7 +1,7 @@
 kubectl config get-clusters
 kubectl config current-context
-kubectl svc -A
-kubectl nodes -A
+kubectl get svc -A
+kubectl get nodes -A
 kubectl config use-context minikube
 
 Available Commands:
