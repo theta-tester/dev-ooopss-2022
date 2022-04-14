@@ -1,4 +1,4 @@
-Running two instances of minikube on windows 10, one on docker-desktop and other on wsl2 docker <br>
+Running two instances of kubernetes cluster on windows 10, (kubernetes v1.22.5) on docker-desktop and (minikube) on wsl2 docker <br>
 Just checking how it work on multi-clusters<br>
 found out that minikube doesn't play good with exposing ports while docker-desktop works out of the box<br>
 https://www.virtualizationhowto.com/2021/11/install-minikube-in-wsl-2-with-kubectl-and-helm/
